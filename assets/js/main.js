@@ -95,3 +95,11 @@ function reproducirSonido(nombreAnimal, datos) {
   player.src = rutaSonido;
   player.play();
 }
+
+// Función para cargar la página al recargar
+window.onload = () => {
+  // Vaciar los campos al cargar la página
+  document.getElementById("animal").value = "";
+  document.getElementById("edad").value = "";
+  document.getElementById("comentarios").value = "";
+};
