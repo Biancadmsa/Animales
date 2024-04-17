@@ -1,7 +1,10 @@
 // Simulación de consulta asíncrona
 export async function obtenerDatosAnimales() {
+  // Retorna una nueva promesa
   return new Promise((resolve, reject) => {
+    // Simula un retardo de 2 segundos antes de ejecutar el código dentro de la función de retardo
     setTimeout(() => {
+      // Objeto que contiene imágenes y sonidos de varios animales
       const datos = {
         imagenes: {
           Leon: "/assets/imgs/Leon.png",
@@ -18,13 +21,15 @@ export async function obtenerDatosAnimales() {
           Aguila: "/assets/sounds/Chillido.mp3",
         },
       };
-      // Simular un error aleatorio
+      // Simula un error aleatorio con una probabilidad del 50%
       const randomError = Math.random() > 0.5;
+      // Si ocurre un error, rechaza la promesa con un mensaje de error
       if (randomError) {
         reject("Hubo un problema al cargar los datos de los animales.");
       } else {
+        // Si no hay error, resuelve la promesa con los datos de los animales
         resolve(datos);
       }
-    }, 2000);
-  });
-}
+    }, 2000); // Fin del setTimeout, retardo de 2000 milisegundos (2 segundos)
+  }); // Fin de la promesa
+} // Fin de la función obtenerDatosAnimales

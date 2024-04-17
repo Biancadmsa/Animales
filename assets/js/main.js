@@ -12,16 +12,18 @@ import { Leon, Lobo, Oso, Serpiente, Aguila } from "./animal.js";
 
     // Manejar el evento de registro de animal
     document.getElementById("btnRegistrar").addEventListener("click", () => {
+      // Obtener los valores de los campos del formulario
       const nombre = document.getElementById("animal").value;
       const edad = document.getElementById("edad").value;
       const comentarios = document.getElementById("comentarios").value;
 
+      // Validar que se ingresaron todos los datos
       if (!nombre || !edad || !comentarios) {
         alert("Ingresa todos los datos.");
         return;
       }
 
-      // Crear instancia del animal correspondiente
+      // Crear instancia del animal correspondiente según el nombre seleccionado
       let animal;
       switch (nombre) {
         case "Leon":
@@ -44,10 +46,10 @@ import { Leon, Lobo, Oso, Serpiente, Aguila } from "./animal.js";
           return;
       }
 
-      // Mostrar el animal en la tabla
+      // Mostrar el animal en la tabla del DOM
       mostrarAnimalEnTabla(animal, datos); // Pasar los datos como argumento adicional
 
-      // Devolver el formulario en un estado inicial luego de registrar a cada animal
+      // Devolver el formulario a un estado inicial después de registrar el animal
       document.getElementById("animal").value = "";
       document.getElementById("edad").value = "";
       document.getElementById("comentarios").value = "";
@@ -58,7 +60,8 @@ import { Leon, Lobo, Oso, Serpiente, Aguila } from "./animal.js";
 })();
 
 // Función para mostrar un animal en la tabla del DOM
-function mostrarAnimalEnTabla(animal, datos) { // Añadir datos como parámetro
+function mostrarAnimalEnTabla(animal, datos) {
+  // Añadir datos como parámetro
   const tablaAnimales = document.getElementById("Animales");
   const nuevoAnimal = document.createElement("div");
   nuevoAnimal.classList.add("animal");
@@ -74,7 +77,7 @@ function mostrarAnimalEnTabla(animal, datos) { // Añadir datos como parámetro
   `;
   tablaAnimales.appendChild(nuevoAnimal);
 
-  // Obtener el botón de reproducir sonido dentro del nuevo animal
+  // Obtener el botón de reproducir sonido dentro del nuevo animal y agregar un evento de clic
   const btnReproducirSonido = nuevoAnimal.querySelector(".btnReproducirSonido");
   btnReproducirSonido.addEventListener("click", () => {
     reproducirSonido(animal.nombre, datos); // Pasar los datos como argumento adicional
@@ -82,7 +85,7 @@ function mostrarAnimalEnTabla(animal, datos) { // Añadir datos como parámetro
 }
 
 // Función para reproducir el sonido del animal
-function reproducirSonido(nombreAnimal, datos) { 
+function reproducirSonido(nombreAnimal, datos) {
   // Obtener la ruta del sonido del animal
   const rutaSonido = datos.sonidos[nombreAnimal];
   if (!rutaSonido) {
