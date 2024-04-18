@@ -2,6 +2,15 @@
 import { obtenerDatosAnimales } from "./acciones.js";
 import { Leon, Lobo, Oso, Serpiente, Aguila } from "./animal.js";
 
+// Array de nombres de animales y sus  clases
+const animalesDisponibles = [
+  { nombre: "Leon", clase: Leon },
+  { nombre: "Lobo", clase: Lobo },
+  { nombre: "Oso", clase: Oso },
+  { nombre: "Serpiente", clase: Serpiente },
+  { nombre: "Aguila", clase: Aguila }
+];
+
 // Función autoejecutable IIFE para manejar la lógica principal
 (async () => {
   try {
@@ -23,28 +32,17 @@ import { Leon, Lobo, Oso, Serpiente, Aguila } from "./animal.js";
         return;
       }
 
-      // Crear instancia del animal correspondiente según el nombre seleccionado
-      let animal;
-      switch (nombre) {
-        case "Leon":
-          animal = new Leon(nombre, edad, imagenes.Leon, comentarios, sonidos.Leon);
-          break;
-        case "Lobo":
-          animal = new Lobo(nombre, edad, imagenes.Lobo, comentarios, sonidos.Lobo);
-          break;
-        case "Oso":
-          animal = new Oso(nombre, edad, imagenes.Oso, comentarios, sonidos.Oso);
-          break;
-        case "Serpiente":
-          animal = new Serpiente(nombre, edad, imagenes.Serpiente, comentarios, sonidos.Serpiente);
-          break;
-        case "Aguila":
-          animal = new Aguila(nombre, edad, imagenes.Aguila, comentarios, sonidos.Aguila);
-          break;
-        default:
-          console.log("Animal no reconocido");
-          return;
+      // Encontrar la clase correspondiente al nombre del animal seleccionado
+      const animalClass = animalesDisponibles.find(animal => animal.nombre === nombre)?.clase;
+
+      // Validar que se seleccionó un animal válido
+      if (!animalClass) {
+        console.log("Animal no reconocido");
+        return;
       }
+
+      // Crear instancia del animal correspondiente según el nombre seleccionado
+      const animal = new animalClass(nombre, edad, imagenes[nombre], comentarios, sonidos[nombre]);
 
       // Mostrar el animal en la tabla del DOM
       mostrarAnimalEnTabla(animal, datos); // Pasar los datos como argumento adicional
@@ -72,7 +70,6 @@ function mostrarAnimalEnTabla(animal, datos) {
         <h5 class="card-title">${animal.nombre}</h5>
         <p class="card-text">${animal.comentarios}</p>
         <button class="btn btn-primary btnReproducirSonido"><i class="fa-solid fa-volume-high"></i> Reproducir sonido</button>
-
       </div>
     </div>
   `;
