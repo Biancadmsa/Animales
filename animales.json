@@ -26,5 +26,7 @@
       "sonido":"Chillido.mp3"
     }
    
-  ]
+  ],
+  "liveServer.settings.port": 5501
+  
 }
