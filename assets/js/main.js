@@ -71,7 +71,8 @@ function mostrarAnimalEnTabla(animal, datos) {
       <div class="card-body">
         <h5 class="card-title">${animal.nombre}</h5>
         <p class="card-text">${animal.comentarios}</p>
-        <button class="btn btn-primary btnReproducirSonido">Reproducir sonido</button>
+        <button class="btn btn-primary btnReproducirSonido"><i class="fa-solid fa-volume-high"></i> Reproducir sonido</button>
+
       </div>
     </div>
   `;
