@@ -7,18 +7,18 @@ export async function obtenerDatosAnimales() {
       // Objeto que contiene imágenes y sonidos de varios animales
       const datos = {
         imagenes: {
-          Leon: "./assets/imgs/Leon.png",
-          Lobo: "./assets/imgs/Lobo.jpg",
-          Oso: "./assets/imgs/Oso.jpg",
-          Serpiente: "./assets/imgs/Serpiente.jpg",
-          Aguila: "./assets/imgs/Aguila.png",
+          Leon: "/assets/imgs/Leon.png",
+          Lobo: "/assets/imgs/Lobo.jpg",
+          Oso: "/assets/imgs/Oso.jpg",
+          Serpiente: "/assets/imgs/Serpiente.jpg",
+          Aguila: "/assets/imgs/Aguila.png",
         },
         sonidos: {
-          Leon: "./assets/sounds//Rugido.mp3",
-          Lobo: "./assets/sounds/Aullido.mp3",
-          Oso: "./assets/sounds/Grunido.mp3",
-          Serpiente: "./assets/sounds/Siseo.mp3",
-          Aguila: "./assets/sounds/Chillido.mp3",
+          Leon: "/assets/sounds//Rugido.mp3",
+          Lobo: "/assets/sounds/Aullido.mp3",
+          Oso: "/assets/sounds/Grunido.mp3",
+          Serpiente: "/assets/sounds/Siseo.mp3",
+          Aguila: "/assets/sounds/Chillido.mp3",
         },
       };
       // Simula un error aleatorio con una probabilidad del 50%
